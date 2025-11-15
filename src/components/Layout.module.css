@@ -1,16 +1,17 @@
 .main {
     padding: 0;
     display: flex;
-    border: thin solid green;
 }
 
 .sidebar {
     flex: 1;
-    border: thin solid red;
+    border: thin solid #dddddd;
 }
 
 .outlet {
+    /* display: flex; */
     flex: 5;
+    padding: 20px;
+    background-color: #eeeeee;
     border: thin solid green;
-    padding: 40px;
 }

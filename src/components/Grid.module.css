@@ -1,0 +1,18 @@
+.grid {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    border: thin solid #dddddd;
+    border-radius: 4px;
+    background-color: #ffffff;
+    width: 100%;
+
+    header {
+        border-bottom: thin solid #dddddd;
+        padding: 16px 0;
+    }
+
+    div {
+        padding: 16px 0;
+    }
+}

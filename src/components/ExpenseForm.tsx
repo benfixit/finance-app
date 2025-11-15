@@ -2,6 +2,7 @@ import { useState } from "react";
 import { v4 } from "uuid";
 import { type ExpenseItem } from "../typings";
 import { useExpenses } from "../store/ExpensesProvider";
+import styles from "./ExpenseForm.module.css";
 
 const defaultFormData = {
     id: v4(),
@@ -37,7 +38,7 @@ const Form = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit}>
             <input name="title" type="text" placeholder="Expense Title" value={formData.title} onChange={handleChange} />
             <input name="amount" type="number" placeholder="Amount" value={formData.amount} onChange={handleChange} />
             <select name="category" value={formData.category} onChange={handleChange}>

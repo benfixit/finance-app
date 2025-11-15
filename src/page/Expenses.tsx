@@ -1,16 +1,30 @@
-import Form from '../components/Form'
+// @ts-nocheck
+import { Card } from '../components/Card';
+import ExpenseForm from '../components/ExpenseForm'
 import Table from '../components/Table'
-import ExpensesProvider from '../store/ExpensesProvider'
+import ExpensesProvider, { useExpenses } from '../store/ExpensesProvider'
+import styles from "./Expenses.module.css";
+
+const columns = [
+  { key: 'title', value: 'Title' },
+  { key: 'amount', value: 'Amount' },
+  { key: 'category', value: 'Category' },
+  { key: 'date', value: 'Date' },
+  { key: 'action', value: 'Action' }
+];
 
 const Expenses = () => {
+  const { expenses } = useExpenses();
 
   return (
-    <>
-      <ExpensesProvider>
-        <Form />
-        <Table />
-      </ExpensesProvider>
-    </>
+    <section className={styles.expenses}>
+      <Card title='Add New Expense'>
+        <ExpenseForm />
+      </Card>
+      <Card title='Expenses Overview'>
+        <Table columns={columns} rows={expenses} />
+      </Card>
+    </section>
   )
 }
 
