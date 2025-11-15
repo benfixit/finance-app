@@ -1,0 +1,16 @@
+.main {
+    padding: 0;
+    display: flex;
+    border: thin solid green;
+}
+
+.sidebar {
+    flex: 1;
+    border: thin solid red;
+}
+
+.outlet {
+    flex: 5;
+    border: thin solid green;
+    padding: 40px;
+}
