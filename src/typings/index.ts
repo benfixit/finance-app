@@ -6,6 +6,13 @@ export type ExpenseItem = {
     date: string;
 }
 
+export type BudgetItem = {
+    id: string;
+    category: string; // should be a union
+    amount: number;
+    date: string;
+}
+
 export type TableProps = {
     rows: Array<ExpenseItem>
 }

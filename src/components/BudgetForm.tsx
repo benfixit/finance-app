@@ -1,21 +1,20 @@
 import { useState } from "react";
 import { v4 } from "uuid";
-import { type ExpenseItem } from "../typings";
-import { useExpenses } from "../store/ExpensesProvider";
-import styles from "./ExpenseForm.module.css";
+import { type BudgetItem } from "../typings";
+import { useBudget } from "../store/BudgetProvider";
+import styles from "./BudgetForm.module.css";
 
 const defaultFormData = {
     id: v4(),
-    title: "",
     amount: 0,
     category: "",
     date: ""
 };
 
-const ExpenseForm = () => {
-    const { expenses, saveExpenses } = useExpenses();
+const BudgetForm = () => {
+    const { budget, saveBudget } = useBudget();
 
-    const [formData, setFormData] = useState<ExpenseItem>(defaultFormData);
+    const [formData, setFormData] = useState<BudgetItem>(defaultFormData);
 
     //@ts-ignore
     const handleChange = (event) => {
@@ -28,7 +27,7 @@ const ExpenseForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        saveExpenses([...expenses, formData]);
+        saveBudget([...budget, formData]);
 
         clearForm();
     }
@@ -39,17 +38,16 @@ const ExpenseForm = () => {
 
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
-            <input name="title" type="text" placeholder="Expense Title" value={formData.title} onChange={handleChange} />
-            <input name="amount" type="number" placeholder="Amount" value={formData.amount} onChange={handleChange} />
             <select name="category" value={formData.category} onChange={handleChange}>
                 <option value={"Food"}>Food</option>
                 <option value={"Utilities"}>Utilities</option>
                 <option value={"Transportation"}>Transportation</option>
             </select>
+            <input name="amount" type="number" placeholder="Amount" value={formData.amount} onChange={handleChange} />
             <input name="date" type="date" value={formData.date} onChange={handleChange} />
-            <button>Add Expense</button>
+            <button>Add Budget</button>
         </form>
     );
 }
 
-export default ExpenseForm;
+export default BudgetForm;
